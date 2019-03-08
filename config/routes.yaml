@@ -1,3 +1,9 @@
 index:
     path: /
     controller: App\Controller\LoginController::login
+entry_list:
+    path: /list
+    controller: App\Controller\ListController::list
+entry_add:
+    path: /add
+    controller: App\Controller\ListController::add

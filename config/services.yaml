@@ -25,3 +25,12 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+    entry_manager:
+       class: App\Manager\EntryManager
+       arguments: ['@doctrine.orm.entity_manager']
+       public: true
+ 
+    entry_service:
+        class: App\Services\EntryService
+        arguments: ['@entry_manager']
+        public: true

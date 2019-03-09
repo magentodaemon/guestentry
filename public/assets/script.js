@@ -32,5 +32,9 @@ jQuery("document").ready(function() {
         renderDetailType();    
     });
 
+    setTimeout(function() {
+        jQuery("div.alert").hide();
+    }, 5000);
+
 
 });

@@ -2,8 +2,12 @@ index:
     path: /
     controller: App\Controller\LoginController::login
 entry_list:
-    path: /list
+    path: /list/{page}
     controller: App\Controller\ListController::list
+    defaults:
+        page: 1
+    requirements:
+        page: '\d+'
 entry_add:
     path: /add
     controller: App\Controller\ListController::add

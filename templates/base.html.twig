@@ -14,6 +14,15 @@
     <nav class="navbar navbar-dark bg-dark">
         <span class="navbar-brand mb-0 h1">Guest Entry</span>
     </nav>
+    
+    {% for label, flashes in app.session.flashbag.all %}
+      {% for flash in flashes %}
+          <div class="alert alert-{{ label }}">
+              {{ flash }}
+          </div>
+      {% endfor %}
+    {% endfor %}
+
     {% block body %}{% endblock %}
        
     <!-- Optional JavaScript -->

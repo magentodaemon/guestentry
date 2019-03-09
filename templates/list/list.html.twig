@@ -65,9 +65,12 @@
                                 {% endif %}
                             </td>
                             <td>
-                                <a href="#">Edit</a> |
-                                <a href="#">Delete</a> |
-                                <a href="#">Approve</a>
+                                    <a href="#">View</a>
+                                {% if app.session.get('userType') == 'admin' %}
+                                    |<a href="#">Edit</a>
+                                    |<a href="#">Delete</a>
+                                    |<a href="#">Approve</a>    
+                                {% endif %}
                             </td>
                         </tr>
                     {% endfor %}

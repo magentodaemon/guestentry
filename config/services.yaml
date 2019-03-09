@@ -34,3 +34,7 @@ services:
         class: App\Services\EntryService
         arguments: ['@entry_manager']
         public: true
+    
+    access_voter:
+        class: App\Security\ActionVoter
+        tags: ['security.voter']

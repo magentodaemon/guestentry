@@ -7,12 +7,13 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="assets/custom.css" >
      <title>{% block title %}Welcome!{% endblock %}</title>
   </head>
   <body>
     <nav class="navbar navbar-dark bg-dark">
         <span class="navbar-brand mb-0 h1">Guest Entry</span>
+        <span class="navbar-text mb-0 navbar-right">User Type :{{app.session.get('userType') }}</span>
     </nav>
     
     {% for label, flashes in app.session.flashbag.all %}

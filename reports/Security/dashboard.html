@@ -2,7 +2,7 @@
 <html lang="en">
  <head>
   <meta charset="UTF-8">
-  <title>Dashboard for C:\xampp\htdocs\guestentry\src/Manager</title>
+  <title>Dashboard for C:\xampp\htdocs\guestentry\src/Security</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="../.css/bootstrap.min.css" rel="stylesheet" type="text/css">
   <link href="../.css/nv.d3.min.css" rel="stylesheet" type="text/css">
@@ -19,7 +19,7 @@
      <div class="col-md-12">
       <ol class="breadcrumb">
         <li><a href="../index.html">C:\xampp\htdocs\guestentry\src</a></li>
-        <li><a href="index.html">Manager</a></li>
+        <li><a href="index.html">Security</a></li>
         <li class="active">(Dashboard)</li>
 
       </ol>
@@ -59,7 +59,7 @@
         </tr>
        </thead>
        <tbody>
-       <tr><td><a href="EntryManager.php.html#8">App\Manager\EntryManager</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ActionVoter.php.html#8">App\Security\ActionVoter</a></td><td class="text-right">0%</td></tr>
 
        </tbody>
       </table>
@@ -76,7 +76,7 @@
         </tr>
        </thead>
        <tbody>
-       <tr><td><a href="EntryManager.php.html#8">App\Manager\EntryManager</a></td><td class="text-right">132</td></tr>
+       <tr><td><a href="ActionVoter.php.html#8">App\Security\ActionVoter</a></td><td class="text-right">306</td></tr>
 
        </tbody>
       </table>
@@ -114,12 +114,13 @@
         </tr>
        </thead>
        <tbody>
-       <tr><td><a href="EntryManager.php.html#12"><abbr title="App\Manager\EntryManager::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
-       <tr><td><a href="EntryManager.php.html#20"><abbr title="App\Manager\EntryManager::addEntry">addEntry</abbr></a></td><td class="text-right">0%</td></tr>
-       <tr><td><a href="EntryManager.php.html#29"><abbr title="App\Manager\EntryManager::updateEntry">updateEntry</abbr></a></td><td class="text-right">0%</td></tr>
-       <tr><td><a href="EntryManager.php.html#53"><abbr title="App\Manager\EntryManager::deleteEntry">deleteEntry</abbr></a></td><td class="text-right">0%</td></tr>
-       <tr><td><a href="EntryManager.php.html#66"><abbr title="App\Manager\EntryManager::getEntries">getEntries</abbr></a></td><td class="text-right">0%</td></tr>
-       <tr><td><a href="EntryManager.php.html#75"><abbr title="App\Manager\EntryManager::getTotalEntriesCount">getTotalEntriesCount</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ActionVoter.php.html#16"><abbr title="App\Security\ActionVoter::supports">supports</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ActionVoter.php.html#31"><abbr title="App\Security\ActionVoter::voteOnAttribute">voteOnAttribute</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ActionVoter.php.html#52"><abbr title="App\Security\ActionVoter::canAdd">canAdd</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ActionVoter.php.html#57"><abbr title="App\Security\ActionVoter::canView">canView</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ActionVoter.php.html#62"><abbr title="App\Security\ActionVoter::canEdit">canEdit</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ActionVoter.php.html#70"><abbr title="App\Security\ActionVoter::canDelete">canDelete</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ActionVoter.php.html#78"><abbr title="App\Security\ActionVoter::canApprove">canApprove</abbr></a></td><td class="text-right">0%</td></tr>
 
        </tbody>
       </table>
@@ -136,8 +137,11 @@
         </tr>
        </thead>
        <tbody>
-       <tr><td><a href="EntryManager.php.html#29"><abbr title="App\Manager\EntryManager::updateEntry">updateEntry</abbr></a></td><td class="text-right">30</td></tr>
-       <tr><td><a href="EntryManager.php.html#53"><abbr title="App\Manager\EntryManager::deleteEntry">deleteEntry</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="ActionVoter.php.html#31"><abbr title="App\Security\ActionVoter::voteOnAttribute">voteOnAttribute</abbr></a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="ActionVoter.php.html#16"><abbr title="App\Security\ActionVoter::supports">supports</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="ActionVoter.php.html#62"><abbr title="App\Security\ActionVoter::canEdit">canEdit</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="ActionVoter.php.html#70"><abbr title="App\Security\ActionVoter::canDelete">canDelete</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="ActionVoter.php.html#78"><abbr title="App\Security\ActionVoter::canApprove">canApprove</abbr></a></td><td class="text-right">6</td></tr>
 
        </tbody>
       </table>
@@ -186,7 +190,7 @@ $(document).ready(function() {
       .yAxis.tickFormat(d3.format('d'));
 
     d3.select('#methodCoverageDistribution svg')
-      .datum(getCoverageDistributionData([6,0,0,0,0,0,0,0,0,0,0,0], "Method Coverage"))
+      .datum(getCoverageDistributionData([7,0,0,0,0,0,0,0,0,0,0,0], "Method Coverage"))
       .transition().duration(500).call(chart);
 
     nv.utils.windowResize(chart.update);
@@ -236,7 +240,7 @@ $(document).ready(function() {
     chart.yAxis.axisLabel('Cyclomatic Complexity');
 
     d3.select('#classComplexity svg')
-      .datum(getComplexityData([[0,11,"<a href=\"EntryManager.php.html#8\">App\\Manager\\EntryManager<\/a>"]], 'Class Complexity'))
+      .datum(getComplexityData([[0,17,"<a href=\"ActionVoter.php.html#8\">App\\Security\\ActionVoter<\/a>"]], 'Class Complexity'))
       .transition()
       .duration(500)
       .call(chart);
@@ -260,7 +264,7 @@ $(document).ready(function() {
     chart.yAxis.axisLabel('Method Complexity');
 
     d3.select('#methodComplexity svg')
-      .datum(getComplexityData([[0,1,"<a href=\"EntryManager.php.html#12\">App\\Manager\\EntryManager::__construct<\/a>"],[0,1,"<a href=\"EntryManager.php.html#20\">App\\Manager\\EntryManager::addEntry<\/a>"],[0,5,"<a href=\"EntryManager.php.html#29\">App\\Manager\\EntryManager::updateEntry<\/a>"],[0,2,"<a href=\"EntryManager.php.html#53\">App\\Manager\\EntryManager::deleteEntry<\/a>"],[0,1,"<a href=\"EntryManager.php.html#66\">App\\Manager\\EntryManager::getEntries<\/a>"],[0,1,"<a href=\"EntryManager.php.html#75\">App\\Manager\\EntryManager::getTotalEntriesCount<\/a>"]], 'Method Complexity'))
+      .datum(getComplexityData([[0,3,"<a href=\"ActionVoter.php.html#16\">App\\Security\\ActionVoter::supports<\/a>"],[0,6,"<a href=\"ActionVoter.php.html#31\">App\\Security\\ActionVoter::voteOnAttribute<\/a>"],[0,1,"<a href=\"ActionVoter.php.html#52\">App\\Security\\ActionVoter::canAdd<\/a>"],[0,1,"<a href=\"ActionVoter.php.html#57\">App\\Security\\ActionVoter::canView<\/a>"],[0,2,"<a href=\"ActionVoter.php.html#62\">App\\Security\\ActionVoter::canEdit<\/a>"],[0,2,"<a href=\"ActionVoter.php.html#70\">App\\Security\\ActionVoter::canDelete<\/a>"],[0,2,"<a href=\"ActionVoter.php.html#78\">App\\Security\\ActionVoter::canApprove<\/a>"]], 'Method Complexity'))
       .transition()
       .duration(500)
       .call(chart);

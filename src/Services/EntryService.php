@@ -20,17 +20,27 @@ class EntryService implements EntryServiceInterface{
 
     }
 
+    public function approveEntry(int $id)
+    {
+        return $this->entryManager->approveEntry($id);
+    }
+
+    public function revokeEntry(int $id)
+    {
+        return $this->entryManager->revokeEntry($id);
+    }
+
     public function addEntry($data)
     {
         return $this->entryManager->addEntry($data);
     }
 
-    public function deleteEntry(){
-
+    public function deleteEntry(int $id){
+        return $this->entryManager->deleteEntry($id);
     }
 
-    public function getEntry(){
-
+    public function getEntry(int $id){
+        return $this->entryManager->getEntry($id);
     }
 
     public function getEntries(Pager $pager)

@@ -10,12 +10,16 @@ interface EntryServiceInterface{
 
     public function addEntry($data);
 
-    public function deleteEntry();
+    public function deleteEntry(int $id);
 
-    public function getEntry();
+    public function getEntry(int $id);
 
     public function getEntries(Pager $pager);
 
     public function getTotalEntriesCount(): int;
+
+    public function approveEntry(int $id);
+
+    public function revokeEntry(int $id);
 
 }

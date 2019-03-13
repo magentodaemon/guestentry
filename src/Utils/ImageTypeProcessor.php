@@ -5,6 +5,7 @@ namespace App\Utils;
 class ImageTypeProcessor implements ImageTypeProcessorInterface{
 
     CONST FILE_UPLOAD_LOCATION = 'images';
+    CONST NULL_IMAGE = 'not_found.png';
 
     public function updateImage($file, $previousImage = false){
         try 
@@ -17,10 +18,10 @@ class ImageTypeProcessor implements ImageTypeProcessorInterface{
             $file->move(self::FILE_UPLOAD_LOCATION, $filename);
 
         } catch (\Exception $e){
-            throw new \Exception('Unable to upload image');
+            return self::NULL_IMAGE;
         }
 
-        return self::FILE_UPLOAD_LOCATION.DIRECTORY_SEPARATOR.$filename;
+        return $filename;
 
     }
 

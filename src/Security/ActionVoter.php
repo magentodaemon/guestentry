@@ -3,12 +3,14 @@
 namespace App\Security;
 
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authorization\Voter\Voter;
 
 class ActionVoter extends Voter
 {
     const ADD = 'add';
     const VIEW = 'view';
+    const LIST = 'list';
     const EDIT = 'edit';
     const DELETE = 'delete';
     const APPROVE = 'approve';
@@ -16,7 +18,7 @@ class ActionVoter extends Voter
     protected function supports($attribute, $subject)
     {
         // if the attribute isn't one we support, return false
-        if (!in_array($attribute, [self::VIEW, self::EDIT, self::DELETE, self::APPROVE])) {
+        if (!in_array($attribute, [self::LIST, self::ADD, self::VIEW, self::EDIT, self::DELETE, self::APPROVE])) {
             return false;
         }
 
@@ -35,6 +37,8 @@ class ActionVoter extends Voter
         switch ($attribute) {
             case self::VIEW:
                 return $this->canView($userType);
+            case self::LIST:
+                return $this->canList($userType);
             case self::ADD:
                 return $this->canAdd($userType);
             case self::EDIT:
@@ -48,7 +52,11 @@ class ActionVoter extends Voter
         throw new \LogicException('This code should not be reached!');
     }
 
-    
+    private function canList($userType)
+    {
+        return true;
+    }
+
     private function canAdd($userType)
     {
         return true;

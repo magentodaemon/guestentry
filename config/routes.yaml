@@ -11,3 +11,32 @@ entry_list:
 entry_add:
     path: /add
     controller: App\Controller\ListController::add
+entry_view:
+    path: /view/{id}
+    controller: App\Controller\ListController::view
+    defaults:
+        id: 1
+    requirements:
+        id: '\d+'
+entry_delete:
+    path: /delete/{id}
+    controller: App\Controller\ListController::delete
+    defaults:
+        id: 1
+    requirements:
+        id: '\d+'
+entry_approve:
+    path: /approve/{id}
+    controller: App\Controller\ListController::approve
+    defaults:
+        id: 1
+    requirements:
+        id: '\d+'
+entry_revoke:
+    path: /revoke/{id}
+    controller: App\Controller\ListController::revoke
+    defaults:
+        id: 1
+    requirements:
+        id: '\d+'
+    

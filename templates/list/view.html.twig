@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}View Entry{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="formBox mt-3" >
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <p class="lead">{{ entry.title }}<p>
+                    </div>
+                    <div class="form-group">
+                        <label for="entry-type">Type</label>
+                        <p class="lead" >{{ entry.type }}<p>
+                    </div>
+                    <div class="form-group" >
+                        <label for="details">Detail</label>
+                        <p class="lead" >
+                        {% if entry.type == 'text' %}
+                            {{ entry.detail}}
+                        {% else %}
+                            <img src="{{ path('index') }}images/{{ entry.detail}}" />
+                        {% endif %}
+                        </p>
+                    </div>
+                    {% if app.session.get('userType') == 'admin' %}
+                    <div class="form-group">
+                        {% if entry.IsApproved == false %}
+                            <a href="{{path('entry_approve')}}/{{entry.id}}" class="btn btn-success" >Approve</a>
+                        {% else %}
+                             <a href="{{path('entry_revoke')}}/{{entry.id}}" class="btn btn-secondary" >Revoke</a>
+                        {% endif %}
+                    </div>
+                    {% endif %}
+        </div>
+    </div>
+{% endblock %}

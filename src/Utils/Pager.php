@@ -18,7 +18,7 @@ class Pager implements PagerInterface
 
     private $lastPage = false;
 
-    public function renderer(int $totalCount)
+    public function renderer(int $totalCount) : void
     {
         $this->totalCount = $totalCount;
         $this->lastPage = ceil($this->totalCount / $this->pageSize );
@@ -33,11 +33,9 @@ class Pager implements PagerInterface
         else
             $this->nextPage = $this->currentPage + 1;
 
-        $pageNumber = $this->currentPage;
-
-        for($i=0;$i<2;$i++)
+        for($i=0;$i<3;$i++)
         {
-            $pageNumber = $pageNumber + $i;
+            $pageNumber = $this->currentPage + $i;
 
             if($pageNumber > $this->lastPage)
                 break;
@@ -53,7 +51,10 @@ class Pager implements PagerInterface
 
     public function setCurrentPage(int $currentPage): void
     {
-        $this->currentPage = $currentPage;
+        if($currentPage < 1)
+            $this->currentPage = 1;
+        else
+            $this->currentPage = $currentPage;
     }
 
     public function getNextPage()

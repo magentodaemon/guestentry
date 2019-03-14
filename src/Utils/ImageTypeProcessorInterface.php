@@ -4,6 +4,6 @@ namespace App\Utils;
 
 interface ImageTypeProcessorInterface{
 
-    public function updateImage($file, $previousImage = false);
+    public function updateImage($file, $previousImage = false): string;
 
 }

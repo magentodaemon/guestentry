@@ -2,8 +2,10 @@
 
 namespace App\Controller\Entrylist;
 
+use App\Entity\Entry;
 use Symfony\Component\HttpFoundation\Request;
 use App\Security\ActionVoter;
+
 
 class AddController extends BaseController{
 

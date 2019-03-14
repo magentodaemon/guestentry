@@ -4,7 +4,7 @@ namespace App\Utils;
 
 interface PagerInterface{
 
-    public function renderer(int $totalCount);
+    public function renderer(int $totalCount): void;
 
     public function getCurrentPage(): int;
 

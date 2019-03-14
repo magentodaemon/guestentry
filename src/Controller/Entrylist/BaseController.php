@@ -9,9 +9,9 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class BaseController extends Controller
 {
-    private $session;
+    protected $session;
 
-    private $imageProcessor;
+    protected $imageProcessor;
 
     public function __construct(ImageTypeProcessor $imageProcessor,SessionInterface $session)
     {

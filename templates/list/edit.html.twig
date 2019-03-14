@@ -20,12 +20,12 @@
                         <input type="text" value="{{ entry.detail }}" name="detail" class="form-control" placeholder="Detail">
                     </div>
                     {% else %}
-                    <img src="{{ path('index') }}images/{{ entry.detail}}" />
+                    <img width ="250" height="250" src="{{ path('index') }}images/{{ entry.detail}}" />
                     <div class="form-group" id="detailstype-image">
                         <label for="details">Detail</label>
                         <input type="file" class="form-control-file" name="fileDetail" >
                     </div>
-                    {% endif %}
+                     {% endif %}
                     
                         
                     <button type="submit" class="btn btn-primary">Submit</button>

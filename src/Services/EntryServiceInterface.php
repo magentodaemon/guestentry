@@ -2,12 +2,12 @@
 
 namespace App\Services;
 
-use App\Utils\Pager;
+use App\Utils\PagerInterface as Pager;
 use App\Entity\Entry;
 
 interface EntryServiceInterface{
 
-    public function addEntry($data);
+    public function addEntry(Entry $entry);
 
     public function deleteEntry(int $id);
 

@@ -3,8 +3,8 @@
 namespace App\Services;
 
 use App\Entity\Entry;
-use App\Manager\EntryManager;
-use App\Utils\Pager;
+use App\Manager\EntryManagerInterface as EntryManager;
+use App\Utils\PagerInterface as Pager;
 
 class EntryService implements EntryServiceInterface{
 
@@ -26,9 +26,9 @@ class EntryService implements EntryServiceInterface{
         return $this->entryManager->revokeEntry($id);
     }
 
-    public function addEntry($data)
+    public function addEntry(Entry $entry)
     {
-        return $this->entryManager->addEntry($data);
+        return $this->entryManager->addEntry($entry);
     }
 
     public function updateEntry(Entry $entry){

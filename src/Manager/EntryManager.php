@@ -2,7 +2,7 @@
 
 namespace App\Manager;
 
-use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\EntityManagerInterface as EntityManager;
 use App\Entity\Entry;
 
 class EntryManager implements EntryManagerInterface{
@@ -10,14 +10,15 @@ class EntryManager implements EntryManagerInterface{
     private $entityManager;
 
     public function __construct(
-        EntityManagerInterface $entityManager
+        EntityManager $entityManager
     )
     {
         $this->entityManager = $entityManager;
     }
 
 
-    public function addEntry($entry){
+    public function addEntry(Entry $entry): Entry
+    {
 
         $this->entityManager->persist($entry);
         $this->entityManager->flush();
@@ -26,7 +27,7 @@ class EntryManager implements EntryManagerInterface{
 
     }
 
-    public function updateEntry(Entry $entry)
+    public function updateEntry(Entry $entry): Entry
     {
         $this->entityManager->persist($entry);
         $this->entityManager->flush();
@@ -34,14 +35,14 @@ class EntryManager implements EntryManagerInterface{
         return $entry;
     }
 
-    public function approveEntry(int $id)
+    public function approveEntry(int $id): Entry
     {
         $entry = $this->entityManager
             ->getRepository(Entry::class)
             ->find($id);
 
         if (!$entry)
-            throw Exception("Entry not found");
+            throw new \Exception("Entry not found");
 
         $entry->setIsApproved(true);
 
@@ -51,14 +52,14 @@ class EntryManager implements EntryManagerInterface{
         return $entry;
     }
 
-    public function revokeEntry(int $id)
+    public function revokeEntry(int $id): Entry
     {
         $entry = $this->entityManager
             ->getRepository(Entry::class)
             ->find($id);
 
         if (!$entry)
-            throw Exception("Entry not found");
+            throw new \Exception("Entry not found");
 
         $entry->setIsApproved(false);
 
@@ -75,13 +76,13 @@ class EntryManager implements EntryManagerInterface{
             ->find($id);
 
         if (!$entry)
-            throw Exception("Entry not found");
+            throw new \Exception("Entry not found");
 
         $this->entityManager->remove($entry);
         $this->entityManager->flush();
     }
 
-    public function getEntry(int $id)
+    public function getEntry(int $id): Entry
     {
         return $this->entityManager
                 ->getRepository(Entry::class)

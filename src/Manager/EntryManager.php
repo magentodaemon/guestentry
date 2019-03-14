@@ -26,24 +26,8 @@ class EntryManager implements EntryManagerInterface{
 
     }
 
-    public function updateEntry(int $id, $data)
+    public function updateEntry(Entry $entry)
     {
-        $entry = $this->entityManager
-            ->getRepository(Entry::class)
-            ->find($id);
-
-        if (!$entry)
-            throw Exception("Entry not found");
-        
-        if(isset($data['title']))
-            $entry->setTitle($data['title']);
-        
-        if(isset($data['type']))
-            $entry->setType($data['type']);
-        
-        if(isset($data['detail']))
-            $entry->setDetail($data['detail']);
-    
         $this->entityManager->persist($entry);
         $this->entityManager->flush();
 

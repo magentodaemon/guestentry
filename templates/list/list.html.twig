@@ -68,7 +68,7 @@
                                 <div class="btn-group" role="group" aria-label="Actions">
                                     <a href="{{path('entry_view')}}/{{entry.id}}" class="btn btn-info">View</a>
                                     {% if app.session.get('userType') == 'admin' %}
-                                        <a href="#" class="btn btn-primary">Edit</a>
+                                        <a href="{{ path( 'entry_edit', {'id' : entry.id} ) }}" class="btn btn-primary">Edit</a>
                                         <a href="{{path('entry_delete')}}/{{entry.id}}" class="btn btn-danger">Delete</a>
                                         {% if entry.IsApproved == false %}
                                             <a href="{{path('entry_approve')}}/{{entry.id}}" class="btn btn-success" >Approve</a>

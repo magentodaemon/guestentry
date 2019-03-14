@@ -5,12 +5,12 @@ namespace App\Utils;
 class ImageTypeProcessor implements ImageTypeProcessorInterface{
 
     CONST FILE_UPLOAD_LOCATION = 'images';
-    CONST NULL_IMAGE = 'not_found.png';
+    CONST NULL_IMAGE = 'not_found_system_file.png';
 
     public function updateImage($file, $previousImage = false){
         try 
         {
-            if($previousImage)
+            if($previousImage && $previousImage != self::NULL_IMAGE)
                 $filename = $previousImage;
             else
                 $filename = time().'_'.$file->getClientOriginalName();

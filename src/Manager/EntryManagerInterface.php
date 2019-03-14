@@ -2,11 +2,13 @@
 
 namespace App\Manager;
 
+use App\Entity\Entry;
+
 interface EntryManagerInterface{
 
     public function addEntry($data);
 
-    public function updateEntry(int $id, $data);
+    public function updateEntry(Entry $entry);
 
     public function deleteEntry(int $id);
 

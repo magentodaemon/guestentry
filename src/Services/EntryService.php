@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Entity\Entry;
 use App\Manager\EntryManager;
 use App\Utils\Pager;
 
@@ -13,11 +14,6 @@ class EntryService implements EntryServiceInterface{
     public function __construct(EntryManager $entryManager)
     {
         $this->entryManager = $entryManager;
-    }
-
-    public function getEntryCollection()
-    {
-
     }
 
     public function approveEntry(int $id)
@@ -33,6 +29,10 @@ class EntryService implements EntryServiceInterface{
     public function addEntry($data)
     {
         return $this->entryManager->addEntry($data);
+    }
+
+    public function updateEntry(Entry $entry){
+        return $this->entryManager->updateEntry($entry);
     }
 
     public function deleteEntry(int $id){

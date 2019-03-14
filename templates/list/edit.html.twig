@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Entry{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="formBox mt-3" >
+            <form action="" method="POST" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input type="text" value="{{ entry.title}}" name="title" class="form-control" placeholder="Title">
+                    </div>
+                    <div class="form-group">
+                        <label for="entry-type">Type</label>
+                        <p>{{ entry.type }}</p>
+                    </div>
+                    {% if entry.type == 'text' %}
+                    <div class="form-group" id="detailstype-text">
+                        <label for="details">Detail</label>
+                        <input type="text" value="{{ entry.detail }}" name="detail" class="form-control" placeholder="Detail">
+                    </div>
+                    {% else %}
+                    <img src="{{ path('index') }}images/{{ entry.detail}}" />
+                    <div class="form-group" id="detailstype-image">
+                        <label for="details">Detail</label>
+                        <input type="file" class="form-control-file" name="fileDetail" >
+                    </div>
+                    {% endif %}
+                    
+                        
+                    <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+        
+    </div>
+{% endblock %}

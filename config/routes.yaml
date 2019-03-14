@@ -3,38 +3,43 @@ index:
     controller: App\Controller\LoginController::login
 entry_list:
     path: /list/{page}
-    controller: App\Controller\ListController::list
+    controller: App\Controller\Entrylist\ListController::list
     defaults:
         page: 1
     requirements:
         page: '\d+'
 entry_add:
     path: /add
-    controller: App\Controller\ListController::add
+    controller: App\Controller\Entrylist\AddController::add
+entry_edit:
+    path: /edit/{id}
+    requirements:
+        id: '\d+'
+    controller: App\Controller\Entrylist\EditController::edit
 entry_view:
     path: /view/{id}
-    controller: App\Controller\ListController::view
+    controller: App\Controller\Entrylist\ViewController::view
     defaults:
         id: 1
     requirements:
         id: '\d+'
 entry_delete:
     path: /delete/{id}
-    controller: App\Controller\ListController::delete
+    controller: App\Controller\Entrylist\DeleteController::delete
     defaults:
         id: 1
     requirements:
         id: '\d+'
 entry_approve:
     path: /approve/{id}
-    controller: App\Controller\ListController::approve
+    controller: App\Controller\Entrylist\ApproveController::approve
     defaults:
         id: 1
     requirements:
         id: '\d+'
 entry_revoke:
     path: /revoke/{id}
-    controller: App\Controller\ListController::revoke
+    controller: App\Controller\Entrylist\RevokeController::revoke
     defaults:
         id: 1
     requirements:

@@ -26,11 +26,11 @@ The code coverage report is available at reports folder
 
 TechStack Used:-
 
-PHP
-PHPUNIT
-BOOTSTRAP
-HTML
-MYSQL
+-PHP
+-PHPUNIT
+-BOOTSTRAP
+-HTML
+-MYSQL
 
 
 

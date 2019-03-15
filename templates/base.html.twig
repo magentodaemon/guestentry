@@ -12,7 +12,7 @@
   </head>
   <body>
     <nav class="navbar navbar-dark bg-dark">
-        <span class="navbar-brand mb-0 h1">Guest Entry</span>
+        <a href="{{ path('index') }}"><span class="navbar-brand mb-0 h1">Guest Entry</span></a>
         <span class="navbar-text mb-0 navbar-right">User Type :{{app.session.get('userType') }}</span>
     </nav>
     

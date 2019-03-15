@@ -22,6 +22,16 @@ ENV details can be configured at .env
 Example for DB configuration:-
 DATABASE_URL=mysql://root:@127.0.0.1:3306/guestentry
 
+The code coverage report is available at reports folder
+
+TechStack Used:-
+
+PHP
+PHPUNIT
+BOOTSTRAP
+HTML
+MYSQL
+
 
 
 

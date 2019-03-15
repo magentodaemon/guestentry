@@ -4,6 +4,7 @@ namespace App\Controller\Entrylist;
 
 use Symfony\Component\HttpFoundation\Request;
 use App\Security\ActionVoter;
+use App\Utils\ImageTypeProcessor;
 
 /**
  * @codeCoverageIgnore

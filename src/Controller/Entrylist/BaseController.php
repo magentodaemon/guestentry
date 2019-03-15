@@ -3,7 +3,7 @@
 namespace App\Controller\Entrylist;
 
 use App\Services\EntryServiceInterface;
-use App\Utils\ImageTypeProcessor;
+use App\Utils\ImageTypeProcessorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
@@ -12,17 +12,34 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
  */
 class BaseController extends Controller
 {
+    /**
+     * $session
+     *
+     * @var SessionInterface
+     */
     protected $session;
 
+    /**
+     * $imageProcessor
+     *
+     * @var ImageTypeProcessorInterface
+     */
     protected $imageProcessor;
 
-    public function __construct(ImageTypeProcessor $imageProcessor,SessionInterface $session)
+    /**
+     * __construct
+     *
+     * @param ImageTypeProcessorInterface $imageProcessor
+     * @param SessionInterface $session
+     * @return void
+     */
+    public function __construct(ImageTypeProcessorInterface $imageProcessor,SessionInterface $session)
     {
         $this->session = $session;
         $this->imageProcessor = $imageProcessor;
     }
 
-    protected function is_allowed($actionType)
+    protected function is_allowed(string $actionType): bool
     {
         try
         {

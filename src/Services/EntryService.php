@@ -8,38 +8,59 @@ use App\Utils\PagerInterface as Pager;
 
 class EntryService implements EntryServiceInterface{
 
+    /**
+     * $entryManager
+     *
+     * @var EntryManager
+     */
     private $entryManager;
+
+
+    /**
+     * $pager
+     *
+     * @var Pager
+     */
     private $pager;
     
+    /**
+     * __construct
+     *
+     * @param EntryManager $entryManager
+     * @return void
+     */
     public function __construct(EntryManager $entryManager)
     {
         $this->entryManager = $entryManager;
     }
 
-    public function approveEntry(int $id)
+    public function approveEntry(int $id): Entry
     {
         return $this->entryManager->approveEntry($id);
     }
 
-    public function revokeEntry(int $id)
+    public function revokeEntry(int $id): Entry
     {
         return $this->entryManager->revokeEntry($id);
     }
 
-    public function addEntry(Entry $entry)
+    public function addEntry(Entry $entry): Entry
     {
         return $this->entryManager->addEntry($entry);
     }
 
-    public function updateEntry(Entry $entry){
+    public function updateEntry(Entry $entry): Entry
+    {
         return $this->entryManager->updateEntry($entry);
     }
 
-    public function deleteEntry(int $id){
-        return $this->entryManager->deleteEntry($id);
+    public function deleteEntry(int $id): void
+    {
+        $this->entryManager->deleteEntry($id);
     }
 
-    public function getEntry(int $id){
+    public function getEntry(int $id): Entry
+    {
         return $this->entryManager->getEntry($id);
     }
 

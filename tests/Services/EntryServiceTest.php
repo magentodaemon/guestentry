@@ -57,16 +57,13 @@ class EntryServiceTest extends TestCase{
 
     public function testShouldDeleteEntry(){
         $this->entryManager
+            ->expects($this->once())
             ->method('deleteEntry')
-            ->with(self::ENTRY_ID)
-            ->willReturn($this->entry);
-
+            ->with(self::ENTRY_ID);
+            
         $entryService = new EntryService($this->entryManager);
         
-        $this->assertInstanceOf(
-            Entry::class,
-            $entryService->deleteEntry(self::ENTRY_ID)
-        );
+        $entryService->deleteEntry(self::ENTRY_ID);
     }
 
     public function testShouldgetEntry(){

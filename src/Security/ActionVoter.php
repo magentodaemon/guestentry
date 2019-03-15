@@ -54,22 +54,22 @@ class ActionVoter extends Voter
     }
     // @codeCoverageIgnore
     
-    public function canList($userType)
+    public function canList(string $userType): bool
     {
         return true;
     }
 
-    public function canAdd($userType)
+    public function canAdd(string $userType): bool
     {
         return true;
     }
 
-    public function canView($userType)
+    public function canView(string $userType): bool
     {
         return true;
     }
 
-    public function canEdit($userType)
+    public function canEdit(string $userType): bool
     {
         if($userType == 'admin')
             return true;
@@ -77,7 +77,7 @@ class ActionVoter extends Voter
         return false;
     }
 
-    public function canDelete($userType)
+    public function canDelete(string $userType): bool
     {
         if($userType == 'admin')
             return true;
@@ -85,7 +85,7 @@ class ActionVoter extends Voter
         return false;
     }
 
-    public function canApprove($userType)
+    public function canApprove(string $userType): bool
     {
         if($userType == 'admin')
             return true;

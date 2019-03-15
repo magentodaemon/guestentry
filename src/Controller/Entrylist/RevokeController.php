@@ -4,6 +4,9 @@ namespace App\Controller\Entrylist;
 
 use App\Security\ActionVoter;
 
+/**
+ * @codeCoverageIgnore
+ */
 class RevokeController extends BaseController{
 
     public function revoke($id)

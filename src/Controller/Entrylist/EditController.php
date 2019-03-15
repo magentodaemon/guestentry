@@ -5,6 +5,9 @@ namespace App\Controller\Entrylist;
 use Symfony\Component\HttpFoundation\Request;
 use App\Security\ActionVoter;
 
+/**
+ * @codeCoverageIgnore
+ */
 class EditController extends BaseController{
 
     public function edit(Request $request, $id)

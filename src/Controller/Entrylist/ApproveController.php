@@ -4,6 +4,9 @@ namespace App\Controller\Entrylist;
 
 use App\Security\ActionVoter;
 
+/**
+ * @codeCoverageIgnore
+ */
 class ApproveController extends BaseController{
 
     public function approve($id)

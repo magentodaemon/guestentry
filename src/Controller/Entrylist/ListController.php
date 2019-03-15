@@ -5,6 +5,9 @@ namespace App\Controller\Entrylist;
 use App\Security\ActionVoter;
 use App\Utils\Pager;
 
+/**
+ * @codeCoverageIgnore
+ */
 class ListController extends BaseController{
 
     public function list($page)

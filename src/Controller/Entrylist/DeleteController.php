@@ -4,6 +4,9 @@ namespace App\Controller\Entrylist;
 
 use App\Security\ActionVoter;
 
+/**
+ * @codeCoverageIgnore
+ */
 class DeleteController extends BaseController{
 
     public function delete($id)

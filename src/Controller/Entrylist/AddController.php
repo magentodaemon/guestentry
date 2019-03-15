@@ -6,7 +6,9 @@ use App\Entity\Entry;
 use Symfony\Component\HttpFoundation\Request;
 use App\Security\ActionVoter;
 
-
+/**
+ * @codeCoverageIgnore
+ */
 class AddController extends BaseController{
 
     public function add(Request $request)

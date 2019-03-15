@@ -7,6 +7,9 @@ use App\Utils\ImageTypeProcessor;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
+/**
+ * @codeCoverageIgnore
+ */
 class BaseController extends Controller
 {
     protected $session;

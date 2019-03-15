@@ -5,6 +5,9 @@ namespace App\Controller\Entrylist;
 use App\Security\ActionVoter;
 use Symfony\Component\HttpFoundation\Request;
 
+/**
+ * @codeCoverageIgnore
+ */
 class ViewController extends BaseController{
 
     public function view(Request $request, $id)

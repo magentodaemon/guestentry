@@ -15,6 +15,7 @@ class ActionVoter extends Voter
     const DELETE = 'delete';
     const APPROVE = 'approve';
 
+    // @codeCoverageIgnoreStart
     protected function supports($attribute, $subject)
     {
         // if the attribute isn't one we support, return false
@@ -51,23 +52,24 @@ class ActionVoter extends Voter
 
         throw new \LogicException('This code should not be reached!');
     }
-
-    private function canList($userType)
+    // @codeCoverageIgnore
+    
+    public function canList($userType)
     {
         return true;
     }
 
-    private function canAdd($userType)
+    public function canAdd($userType)
     {
         return true;
     }
 
-    private function canView($userType)
+    public function canView($userType)
     {
         return true;
     }
 
-    private function canEdit($userType)
+    public function canEdit($userType)
     {
         if($userType == 'admin')
             return true;
@@ -75,7 +77,7 @@ class ActionVoter extends Voter
         return false;
     }
 
-    private function canDelete($userType)
+    public function canDelete($userType)
     {
         if($userType == 'admin')
             return true;
@@ -83,7 +85,7 @@ class ActionVoter extends Voter
         return false;
     }
 
-    private function canApprove($userType)
+    public function canApprove($userType)
     {
         if($userType == 'admin')
             return true;

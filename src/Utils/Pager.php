@@ -5,91 +5,94 @@ namespace App\Utils;
 class Pager implements PagerInterface
 {
     /**
-     * $totalCount
+     * $totalCount.
      *
      * @var integer
      */
     private $totalCount = 0;
 
     /**
-     * $previousPage
+     * $previousPage.
      *
      * @var mix
      */
     private $previousPage = false;
 
     /**
-     * $nextPage
+     * $nextPage.
      *
      * @var mix
      */
     private $nextPage = false;
 
     /**
-     * $displayNumbers
+     * $displayNumbers.
      *
      * @var array
      */
     private $displayNumbers = [];
 
     /**
-     * $currentPage
+     * $currentPage.
      *
      * @var integer
      */
     private $currentPage = 1;
 
     /**
-     * $pageSize
+     * $pageSize.
      *
      * @var integer
      */
     private $pageSize = 10;
 
     /**
-     * $lastPage
+     * $lastPage.
      *
      * @var mix
      */
     private $lastPage = false;
 
-    public function renderer(int $totalCount) : void
+    public function renderer(int $totalCount): void
     {
         $this->totalCount = $totalCount;
-        $this->lastPage = ceil($this->totalCount / $this->pageSize );
+        $this->lastPage = ceil($this->totalCount / $this->pageSize);
 
-        if($this->currentPage <= 1)
+        if ($this->currentPage <= 1) {
             $this->previousPage = false;
-        else
+        } else {
             $this->previousPage = $this->currentPage - 1;
+        }
 
-        if($this->currentPage >= $this->lastPage)
+        if ($this->currentPage >= $this->lastPage) {
             $this->nextPage = false;
-        else
+        } else {
             $this->nextPage = $this->currentPage + 1;
+        }
 
-        for($i=0;$i<3;$i++)
-        {
+        for ($i = 0; $i < 3; ++$i) {
             $pageNumber = $this->currentPage + $i;
 
-            if($pageNumber > $this->lastPage)
+            if ($pageNumber > $this->lastPage) {
                 break;
+            }
 
             $this->displayNumbers[] = $pageNumber;
         }
     }
 
-    public function getCurrentPage() : int
+    public function getCurrentPage(): int
     {
         return $this->currentPage;
     }
 
     public function setCurrentPage(int $currentPage): void
     {
-        if($currentPage < 1)
+        if ($currentPage < 1) {
             $this->currentPage = 1;
-        else
+        } else {
             $this->currentPage = $currentPage;
+        }
     }
 
     public function getNextPage()

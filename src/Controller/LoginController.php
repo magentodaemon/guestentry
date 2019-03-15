@@ -11,28 +11,23 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class LoginController extends Controller
 {
-    CONST ADMIN_PASS = 'admin';
+    const ADMIN_PASS = 'admin';
 
     public function login(SessionInterface $session, Request $request)
     {
-        
-        if($request->isMethod('POST'))
-        {
+        if ($request->isMethod('POST')) {
             $userType = $request->request->get('userType');
             $password = $request->request->get('password');
-              
-            if($userType == 'admin')
-            {
-                if(self::ADMIN_PASS == $password)
+
+            if ('admin' == $userType) {
+                if (self::ADMIN_PASS == $password) {
                     $session->set('userType', $userType);
-                else
-                {
-                    $this->addFlash("error", "Admin password is incorrect");
+                } else {
+                    $this->addFlash('error', 'Admin password is incorrect');
+
                     return $this->redirectToRoute('index');
                 }
-            }
-            else
-            {
+            } else {
                 $session->set('userType', $userType);
             }
 

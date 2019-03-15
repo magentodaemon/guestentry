@@ -4,8 +4,8 @@ namespace App\Manager;
 
 use App\Entity\Entry;
 
-interface EntryManagerInterface{
-
+interface EntryManagerInterface
+{
     public function addEntry(Entry $entry): Entry;
 
     public function updateEntry(Entry $entry): Entry;

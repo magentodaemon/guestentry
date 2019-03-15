@@ -5,8 +5,8 @@ namespace App\Services;
 use App\Utils\PagerInterface as Pager;
 use App\Entity\Entry;
 
-interface EntryServiceInterface{
-
+interface EntryServiceInterface
+{
     public function addEntry(Entry $entry): Entry;
 
     public function deleteEntry(int $id): void;
@@ -16,9 +16,10 @@ interface EntryServiceInterface{
     public function getEntry(int $id);
 
     /**
-     * getEntries
+     * getEntries.
      *
      * @param Pager $pager
+     *
      * @return mix
      */
     public function getEntries(Pager $pager);
@@ -28,5 +29,4 @@ interface EntryServiceInterface{
     public function approveEntry(int $id): Entry;
 
     public function revokeEntry(int $id): Entry;
-
 }

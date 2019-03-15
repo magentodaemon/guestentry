@@ -5,26 +5,22 @@ namespace App\Manager;
 use Doctrine\ORM\EntityManagerInterface as EntityManager;
 use App\Entity\Entry;
 
-class EntryManager implements EntryManagerInterface{
-
+class EntryManager implements EntryManagerInterface
+{
     private $entityManager;
 
     public function __construct(
         EntityManager $entityManager
-    )
-    {
+    ) {
         $this->entityManager = $entityManager;
     }
 
-
     public function addEntry(Entry $entry): Entry
     {
-
         $this->entityManager->persist($entry);
         $this->entityManager->flush();
 
         return $entry;
-
     }
 
     public function updateEntry(Entry $entry): Entry
@@ -41,9 +37,9 @@ class EntryManager implements EntryManagerInterface{
             ->getRepository(Entry::class)
             ->find($id);
 
-        if (!$entry)
-            throw new \Exception("Entry not found");
-
+        if (!$entry) {
+            throw new \Exception('Entry not found');
+        }
         $entry->setIsApproved(true);
 
         $this->entityManager->persist($entry);
@@ -58,9 +54,9 @@ class EntryManager implements EntryManagerInterface{
             ->getRepository(Entry::class)
             ->find($id);
 
-        if (!$entry)
-            throw new \Exception("Entry not found");
-
+        if (!$entry) {
+            throw new \Exception('Entry not found');
+        }
         $entry->setIsApproved(false);
 
         $this->entityManager->persist($entry);
@@ -69,15 +65,15 @@ class EntryManager implements EntryManagerInterface{
         return $entry;
     }
 
-    public function deleteEntry(int $id){
-
+    public function deleteEntry(int $id)
+    {
         $entry = $this->entityManager
             ->getRepository(Entry::class)
             ->find($id);
 
-        if (!$entry)
-            throw new \Exception("Entry not found");
-
+        if (!$entry) {
+            throw new \Exception('Entry not found');
+        }
         $this->entityManager->remove($entry);
         $this->entityManager->flush();
     }
@@ -89,20 +85,19 @@ class EntryManager implements EntryManagerInterface{
                 ->find($id);
     }
 
-    public function getEntries(int $limit,int $offset)
+    public function getEntries(int $limit, int $offset)
     {
         $entries = $this->entityManager
             ->getRepository(Entry::class)
-            ->findBy([], [], $limit , $offset);
-        
+            ->findBy([], [], $limit, $offset);
+
         return $entries;
     }
 
     public function getTotalEntriesCount(): int
-    {   
+    {
         return $this->entityManager
             ->getRepository(Entry::class)
             ->count([]);
     }
-
 }

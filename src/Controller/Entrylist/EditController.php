@@ -8,60 +8,50 @@ use App\Security\ActionVoter;
 /**
  * @codeCoverageIgnore
  */
-class EditController extends BaseController{
-
+class EditController extends BaseController
+{
     public function edit(Request $request, $id)
     {
-        if(!$this->is_allowed(ActionVoter::EDIT))
+        if (!$this->is_allowed(ActionVoter::EDIT)) {
             return $this->redirectToRoute('index');
+        }
 
         $entryService = $this->getEntryService();
         $entry = $entryService->getEntry($id);
-        
-        if($request->isMethod('POST'))
-        {
-            $type= $entry->getType();
 
-            if('image' == $type)
-            {
+        if ($request->isMethod('POST')) {
+            $type = $entry->getType();
+
+            if ('image' == $type) {
                 $file = $request->files->get('fileDetail');
-                
-                if(isset($file))
-                {
+
+                if (isset($file)) {
                     $filepath = $this->imageProcessor
                         ->updateImage($file, $entry->getDetail());
 
                     $entry->setDetail($filepath);
-                }
-                else
-                {
+                } else {
                     $entry->setDetail(ImageTypeProcessor::NULL_IMAGE);
                 }
-            }
-            else
-            {
+            } else {
                 $entry->setDetail($request->request->get('detail'));
             }
-                
-                $entry->setTitle($request->request->get('title'));
-                $entry->setIsApproved(false);
-            
-            try
-            {
+
+            $entry->setTitle($request->request->get('title'));
+            $entry->setIsApproved(false);
+
+            try {
                 $entryService = $this->getEntryService();
                 $entryService->addEntry($entry);
 
-                $this->addFlash("success", "Entry has been successfully added");
-
-            }catch(\Exception $e)
-            {
-                $this->addFlash("error", $e->getMessage());
+                $this->addFlash('success', 'Entry has been successfully added');
+            } catch (\Exception $e) {
+                $this->addFlash('error', $e->getMessage());
             }
 
             return $this->redirectToRoute('entry_list');
         }
 
-        return $this->render('list/edit.html.twig',[ 'entry' => $entry]);
+        return $this->render('list/edit.html.twig', ['entry' => $entry]);
     }
-    
 }

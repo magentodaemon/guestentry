@@ -8,13 +8,14 @@ use App\Utils\Pager;
 /**
  * @codeCoverageIgnore
  */
-class ListController extends BaseController{
-
+class ListController extends BaseController
+{
     public function list($page)
     {
-        if(!$this->is_allowed(ActionVoter::LIST))
+        if (!$this->is_allowed(ActionVoter::LIST)) {
             return $this->redirectToRoute('index');
-        
+        }
+
         $pager = new Pager();
         $pager->setCurrentPage($page);
 
@@ -25,11 +26,11 @@ class ListController extends BaseController{
         $pager->renderer($count);
 
         return $this->render(
-            'list/list.html.twig', 
+            'list/list.html.twig',
             [
                 'entries' => $entries,
-                'pager' => $pager
-            ]);
+                'pager' => $pager,
+            ]
+        );
     }
-    
 }

@@ -2,15 +2,13 @@
 
 namespace App\Utils;
 
-interface ImageTypeProcessorInterface{
-
+interface ImageTypeProcessorInterface
+{
     /**
-     * updateImage
+     * updateImage.
      *
      * @param mixed $file
      * @param mixed $previousImage
-     *
      */
     public function updateImage($file, $previousImage = false): string;
-
 }

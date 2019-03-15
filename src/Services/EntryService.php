@@ -6,27 +6,27 @@ use App\Entity\Entry;
 use App\Manager\EntryManagerInterface as EntryManager;
 use App\Utils\PagerInterface as Pager;
 
-class EntryService implements EntryServiceInterface{
-
+class EntryService implements EntryServiceInterface
+{
     /**
-     * $entryManager
+     * $entryManager.
      *
      * @var EntryManager
      */
     private $entryManager;
 
-
     /**
-     * $pager
+     * $pager.
      *
      * @var Pager
      */
     private $pager;
-    
+
     /**
-     * __construct
+     * __construct.
      *
      * @param EntryManager $entryManager
+     *
      * @return void
      */
     public function __construct(EntryManager $entryManager)
@@ -67,8 +67,8 @@ class EntryService implements EntryServiceInterface{
     public function getEntries(Pager $pager)
     {
         $limit = $pager->getPageSize();
-        $offset = ($pager->getCurrentPage()-1) * $limit;
-        
+        $offset = ($pager->getCurrentPage() - 1) * $limit;
+
         return $this->entryManager->getEntries($limit, $offset);
     }
 

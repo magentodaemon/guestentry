@@ -8,22 +8,23 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * @codeCoverageIgnore
  */
-class ViewController extends BaseController{
-
+class ViewController extends BaseController
+{
     public function view(Request $request, $id)
     {
-        if(!$this->is_allowed(ActionVoter::VIEW))
+        if (!$this->is_allowed(ActionVoter::VIEW)) {
             return $this->redirectToRoute('index');
+        }
 
         $entryService = $this->getEntryService();
 
         $entry = $entryService->getEntry($id);
 
         return $this->render(
-            'list/view.html.twig', 
+            'list/view.html.twig',
             [
-                'entry' => $entry
-            ]);
+                'entry' => $entry,
+            ]
+        );
     }
-    
 }

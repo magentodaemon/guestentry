@@ -7,26 +7,23 @@ use App\Security\ActionVoter;
 /**
  * @codeCoverageIgnore
  */
-class DeleteController extends BaseController{
-
+class DeleteController extends BaseController
+{
     public function delete($id)
     {
-        if(!$this->is_allowed(ActionVoter::DELETE))
+        if (!$this->is_allowed(ActionVoter::DELETE)) {
             return $this->redirectToRoute('index');
-        
+        }
+
         $entryService = $this->getEntryService();
 
-        try
-        {
+        try {
             $entryService->deleteEntry($id);
-            $this->addFlash("success", "Entry has been successfully deleted");
-        }
-        catch(\Exception $e)
-        {
-            $this->addFlash("error", $e->getMessage());
+            $this->addFlash('success', 'Entry has been successfully deleted');
+        } catch (\Exception $e) {
+            $this->addFlash('error', $e->getMessage());
         }
 
         return $this->redirectToRoute('entry_list');
     }
-    
 }

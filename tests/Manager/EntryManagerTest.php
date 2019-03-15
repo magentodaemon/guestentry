@@ -7,8 +7,8 @@ use App\Manager\EntryManager;
 use App\Manager\EntryManagerInterface;
 use App\Repository\EntryRepository;
 
-class EntryManagerTest extends TestCase{
-
+class EntryManagerTest extends TestCase
+{
     private $entityManager;
     private $entry;
 
@@ -19,7 +19,8 @@ class EntryManagerTest extends TestCase{
         parent::__construct();
     }
 
-    public function testShouldbeAnInstanceofEntryManager(){
+    public function testShouldbeAnInstanceofEntryManager()
+    {
         $entryManager = new EntryManager($this->entityManager);
         $this->assertInstanceOf(EntryManagerInterface::class, $entryManager);
     }
@@ -32,37 +33,37 @@ class EntryManagerTest extends TestCase{
 
         $this->entityManager->expects($this->once())
             ->method('flush');
-    
+
         $entryManager = new EntryManager($this->entityManager);
-    
+
         $this->assertInstanceOf(
             Entry::class,
             $entryManager->addEntry($this->entry)
         );
     }
 
-    public function testShouldUpdateEntry(){
-
+    public function testShouldUpdateEntry()
+    {
         $this->entityManager->expects($this->once())
             ->method('persist')
             ->with($this->entry);
 
         $this->entityManager->expects($this->once())
             ->method('flush');
-    
+
         $entryManager = new EntryManager($this->entityManager);
-    
+
         $this->assertInstanceOf(
             Entry::class,
             $entryManager->updateEntry($this->entry)
         );
-
     }
 
-    public function testShouldApproveEntry(){
+    public function testShouldApproveEntry()
+    {
         $entryId = 11;
         $entryRepository = $this->createMock(EntryRepository::class);
-        
+
         $this->entityManager
             ->method('getRepository')
             ->with(Entry::class)
@@ -72,7 +73,7 @@ class EntryManagerTest extends TestCase{
             ->method('find')
             ->with($entryId)
             ->willReturn($this->entry);
-        
+
         $this->entry
             ->expects($this->once())
             ->method('setIsApproved')
@@ -95,15 +96,14 @@ class EntryManagerTest extends TestCase{
         );
     }
 
-
     public function testShouldThrowExceptionForApprovalIfEntryNotFound()
     {
         $this->expectException(\Exception::class);
-        $this->expectExceptionMessage("Entry not found");
+        $this->expectExceptionMessage('Entry not found');
 
         $entryId = 11;
         $entryRepository = $this->createMock(EntryRepository::class);
-        
+
         $this->entityManager
             ->method('getRepository')
             ->with(Entry::class)
@@ -115,15 +115,15 @@ class EntryManagerTest extends TestCase{
             ->willReturn(false);
 
         $entryManager = new EntryManager($this->entityManager);
-        
+
         $entryManager->approveEntry($entryId);
     }
 
-    
-    public function testShouldRevokeEntry(){
+    public function testShouldRevokeEntry()
+    {
         $entryId = 11;
         $entryRepository = $this->createMock(EntryRepository::class);
-        
+
         $this->entityManager
             ->method('getRepository')
             ->with(Entry::class)
@@ -133,7 +133,7 @@ class EntryManagerTest extends TestCase{
             ->method('find')
             ->with($entryId)
             ->willReturn($this->entry);
-        
+
         $this->entry
             ->expects($this->once())
             ->method('setIsApproved')
@@ -156,15 +156,14 @@ class EntryManagerTest extends TestCase{
         );
     }
 
-
     public function testShouldThrowExceptionForRevokeIfEntryNotFound()
     {
         $this->expectException(\Exception::class);
-        $this->expectExceptionMessage("Entry not found");
+        $this->expectExceptionMessage('Entry not found');
 
         $entryId = 11;
         $entryRepository = $this->createMock(EntryRepository::class);
-        
+
         $this->entityManager
             ->method('getRepository')
             ->with(Entry::class)
@@ -176,15 +175,15 @@ class EntryManagerTest extends TestCase{
             ->willReturn(false);
 
         $entryManager = new EntryManager($this->entityManager);
-        
+
         $entryManager->revokeEntry($entryId);
     }
 
-    
-    public function testShouldDeleteEntry(){
+    public function testShouldDeleteEntry()
+    {
         $entryId = 11;
         $entryRepository = $this->createMock(EntryRepository::class);
-        
+
         $this->entityManager
             ->method('getRepository')
             ->with(Entry::class)
@@ -194,7 +193,7 @@ class EntryManagerTest extends TestCase{
             ->method('find')
             ->with($entryId)
             ->willReturn($this->entry);
-        
+
         $this->entityManager
             ->expects($this->once())
             ->method('remove')
@@ -207,18 +206,16 @@ class EntryManagerTest extends TestCase{
         $entryManager = new EntryManager($this->entityManager);
 
         $entryManager->deleteEntry($entryId);
-
     }
-
 
     public function testShouldThrowExceptionForDeleteIfEntryNotFound()
     {
         $this->expectException(\Exception::class);
-        $this->expectExceptionMessage("Entry not found");
+        $this->expectExceptionMessage('Entry not found');
 
         $entryId = 11;
         $entryRepository = $this->createMock(EntryRepository::class);
-        
+
         $this->entityManager
             ->method('getRepository')
             ->with(Entry::class)
@@ -230,14 +227,15 @@ class EntryManagerTest extends TestCase{
             ->willReturn(false);
 
         $entryManager = new EntryManager($this->entityManager);
-        
+
         $entryManager->deleteEntry($entryId);
     }
 
-    public function testShouldReturnEntry(){
+    public function testShouldReturnEntry()
+    {
         $entryId = 11;
         $entryRepository = $this->createMock(EntryRepository::class);
-        
+
         $this->entityManager
             ->method('getRepository')
             ->with(Entry::class)
@@ -256,13 +254,13 @@ class EntryManagerTest extends TestCase{
         );
     }
 
-    public function testShouldReturnEntries(){
-        
-        $limit= 10;
-        $offset= 0;
+    public function testShouldReturnEntries()
+    {
+        $limit = 10;
+        $offset = 0;
 
         $entryRepository = $this->createMock(EntryRepository::class);
-        
+
         $this->entityManager
             ->method('getRepository')
             ->with(Entry::class)
@@ -270,7 +268,7 @@ class EntryManagerTest extends TestCase{
 
         $entryRepository
             ->method('findBy')
-            ->with([], [], $limit , $offset)
+            ->with([], [], $limit, $offset)
             ->willReturn([$this->entry]);
 
         $entryManager = new EntryManager($this->entityManager);
@@ -281,10 +279,11 @@ class EntryManagerTest extends TestCase{
         );
     }
 
-    public function testShouldGetCount(){
+    public function testShouldGetCount()
+    {
         $count = 134;
         $entryRepository = $this->createMock(EntryRepository::class);
-        
+
         $this->entityManager
             ->method('getRepository')
             ->with(Entry::class)

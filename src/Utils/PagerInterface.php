@@ -2,8 +2,8 @@
 
 namespace App\Utils;
 
-interface PagerInterface{
-
+interface PagerInterface
+{
     public function renderer(int $totalCount): void;
 
     public function getCurrentPage(): int;
@@ -17,5 +17,4 @@ interface PagerInterface{
     public function getDisplayNumbers(): array;
 
     public function getPageSize(): int;
-
 }

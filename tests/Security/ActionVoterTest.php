@@ -2,19 +2,18 @@
 
 use PHPUnit\Framework\TestCase;
 use App\Security\ActionVoter;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
-use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authorization\Voter\VoterInterface;
 
-class ActionVoterTest extends TestCase{
-
-    public function testShouldbeAnInstanceofVoter(){
+class ActionVoterTest extends TestCase
+{
+    public function testShouldbeAnInstanceofVoter()
+    {
         $voter = new ActionVoter();
         $this->assertInstanceOf(VoterInterface::class, $voter);
     }
 
-    public function testShouldAllowFollowingOperation(){
-        
+    public function testShouldAllowFollowingOperation()
+    {
         $voter = new ActionVoter();
         $userType = 'any';
 
@@ -23,9 +22,8 @@ class ActionVoterTest extends TestCase{
         $this->assertSame(true, $voter->canView($userType));
     }
 
-
-    public function testShouldAllowFollowingOperationToAdminOnly(){
-        
+    public function testShouldAllowFollowingOperationToAdminOnly()
+    {
         $voter = new ActionVoter();
         $userType = 'admin';
 
@@ -39,8 +37,4 @@ class ActionVoterTest extends TestCase{
         $this->assertSame(false, $voter->canDelete($userType));
         $this->assertSame(false, $voter->canApprove($userType));
     }
-
-    
-
-
 }

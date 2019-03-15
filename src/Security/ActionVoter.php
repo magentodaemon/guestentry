@@ -52,8 +52,9 @@ class ActionVoter extends Voter
 
         throw new \LogicException('This code should not be reached!');
     }
+
     // @codeCoverageIgnore
-    
+
     public function canList(string $userType): bool
     {
         return true;
@@ -71,26 +72,28 @@ class ActionVoter extends Voter
 
     public function canEdit(string $userType): bool
     {
-        if($userType == 'admin')
+        if ('admin' == $userType) {
             return true;
-        
+        }
+
         return false;
     }
 
     public function canDelete(string $userType): bool
     {
-        if($userType == 'admin')
+        if ('admin' == $userType) {
             return true;
-        
+        }
+
         return false;
     }
 
     public function canApprove(string $userType): bool
     {
-        if($userType == 'admin')
+        if ('admin' == $userType) {
             return true;
-        
+        }
+
         return false;
     }
-
 }
